@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: {{ values.realm }}-keycloak
+  title: Keycloak Realm: {{ values.realm }}
+  description: >
+    A preconfigured Keycloak authentication service for realm '{{ values.realm }}'
+    with client '{{ values.client_id }}'.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: {{ repo.owner }}/{{ repo.repo }}
+spec:
+  type: service
+  owner: group:Group4
+  lifecycle: experimental
+  system: authentication
+  providesApis:
+    - {{ values.realm }}-auth-api

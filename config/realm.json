@@ -1,0 +1,47 @@
+{
+  "realm": "{{ values.realm }}",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "resetPasswordAllowed": true,
+  "bruteForceProtected": true,
+  "passwordPolicy": "length(8) and digits(1)",
+
+  "roles": {
+    "realm": [
+      { "name": "user", "description": "Basic user role" },
+      { "name": "admin", "description": "Realm admin for this example" }
+    ]
+  },
+
+  "clients": [
+    {
+      "clientId": "{{ values.client_id }}",
+      "name": "Example SPA",
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["*"],
+      "attributes": { "post.logout.redirect.uris": "+" }
+    }
+  ],
+
+  "users": [
+    {
+      "username": "admin-user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "User",
+      "email": "admin@example.com",
+      "credentials": [
+        { "type": "password", "value": "Admin12345", "temporary": false }
+      ],
+      "realmRoles": ["admin"]
+    }
+  ]
+}

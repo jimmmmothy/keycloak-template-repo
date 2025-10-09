@@ -1,5 +1,5 @@
 {
-  "realm": "{{ values.realm }}",
+  "realm": "${{ values.realm }}",
   "enabled": true,
   "sslRequired": "external",
   "registrationAllowed": false,
@@ -17,7 +17,7 @@
 
   "clients": [
     {
-      "clientId": "{{ values.client_id }}",
+      "clientId": "${{ values.client_id }}",
       "name": "Example SPA",
       "protocol": "openid-connect",
       "publicClient": true,
